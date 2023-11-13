@@ -1,0 +1,617 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 mar. 2023, 11:03:57
+    Author     : Ramiro Martinez
+*/
+
+@charset "ISO-8859-1";
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+	/* COLORS */ 
+	--hue-color: 214;
+	
+	/* MODO DE COLORES  */
+	--first-color: hsl(var(--hue-color), 99%, 30%);
+	--first-color-alt: hsl(var(--hue-color), 80%, 37%);
+	--body-color: hsl(var(--hue-color), 100%, 100%);
+	--label-color: hsl(var(--hue-color), 0%, 0%);
+	--text-color: hsl(var(--hue-color), 0%, 0%);
+	--button-text-color: hsl(var(--hue-color), 100%, 100%);
+	--input-color: hsl(var(--hue-color), 70%, 96%);	
+	--link-color: hsl(var(--hue-color), 99%, 30%);
+	--pagination-color: hsl(var(--hue-color), 100%, 100%);
+} 
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body.dark-theme {
+	--first-color: hsl(var(--hue-color), 99%, 30%);
+	--first-color-alt: hsl(var(--hue-color), 80%, 37%);
+	--body-color: hsl(var(--hue-color), 28%, 12%);
+	--label-color: hsl(var(--hue-color), 100%, 100%);
+	--text-color: hsl(var(--hue-color), 8%, 75%);
+	--button-text-color: hsl(var(--hue-color), 100%, 100%);
+	--input-color: hsl(var(--hue-color), 29%, 16%);
+	--link-color: hsl(var(--hue-color), 100%, 100%);
+	--pagination-color: hsl(var(--hue-color), 99%, 30%);
+}
+
+body {
+	background-color: var(--body-color);
+}
+
+.alert.danger {
+	width: 100%;
+	padding: 1rem 0;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 1rem;
+	background-color: #ee0100;
+}
+
+.login__container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+.left__side {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.left__side img{
+	height: 500px;
+	width: 500px;
+	object-fit: cover;
+}
+
+.right__side {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.right__side h1 {
+	color: var(--first-color);
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.form__group {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.form__group label {
+	color: var(--label-color);
+	position: absolute;
+	font-size: 16px;
+	top: 12px;
+	left: 15px;
+	transform-origin: top left;
+	transition: .5s;
+}
+
+.form__group input {
+	width: 400px;
+	padding: .8rem 1.5rem;
+	background-color: var(--input-color);
+	border: none;
+	outline: none;
+	border-radius: 8px;
+	margin-bottom: 35px;
+	transition: .3s;
+}
+
+.form__group input:focus {
+	border: 1px solid var(--first-color);
+}
+
+.form__group input:focus + label,
+.form__group input:not(:placeholder-shown) + label {
+	color: var(--label-color);
+	transform: translate(-15px, -36px) scale(.8);
+}
+
+.form__group input:not(:placeholder-shown) {
+	border: 1px solid var(--first-color);
+}
+
+.btn {
+	text-align: center;
+}
+
+button {
+	padding: .8rem 3rem;
+	background-color: var(--first-color);
+	outline: none;
+	color: var(--button-text-color);
+	border: 1px solid var(--primary-color);
+	font-weight: 600;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: var(--first-color-alt);
+}
+
+/************************ ESTILOS PARA NAVBAR **********************************************/
+nav.fixed {
+	position: sticky;
+	top: 0;
+	background-color: var(--first-color-alt);
+	box-shadow: 5px 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+nav.fixed a,
+nav.fixed i {
+	color: var(--button-text-color);
+}
+
+nav.fixed i:hover {
+	color: var(--label-color);
+}
+
+nav.fixed a:before {
+	content: "";
+	height: 2px;
+	width: 100%;
+	background: var(--button-text-color);
+	position: absolute;
+	bottom: 0;
+	transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+}
+
+nav.fixed a:hover:before {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+nav.fixed a.active {
+	border-bottom: 2px solid var(--button-text-color);
+}
+
+.navbar__links a.active:before {
+	content: "";
+	height: 0;
+	width: 0;
+}
+
+.navbar {
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 35px;
+}
+
+.navbar img {
+	width: 50px;
+	height: auto;
+}
+
+.navbar__links a {
+	text-decoration: none;
+	font-size: 14px;
+	margin-right: 1rem;
+	color: var(--link-color);
+	font-weight: 600;
+	letter-spacing: 1px;
+	position: relative;
+}
+
+.navbar__links a:before {
+	content: "";
+	height: 2px;
+	width: 100%;
+	background: var(--link-color);
+	position: absolute;
+	bottom: 0;
+	transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+}
+
+.navbar__links a:hover:before {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.navbar__links a.active {
+	border-bottom: 2px solid var(--link-color);
+}
+
+.navbar__links a.active:before {
+	content: "";
+	height: 0;
+	width: 0;
+}
+
+
+.navbar__links i {
+	font-size: 24px;
+	margin-right: 1.5rem;
+	cursor: pointer;
+	color: var(--link-color);
+}
+
+.navbar__links i:hover {
+	color: var(--first-color-alt);
+}
+
+.searchBox {
+    float: right;
+    width: 20%;
+    margin: 0 2rem 2rem 0;
+}
+
+.searchBox input {
+    width: 100%;
+    height: 35px;
+    padding: 0 1rem;
+    outline: none
+}
+
+.hide {
+    display: none;
+}
+
+.exportBtn.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+/************************ ESTILOS PARA EL FORMULARIO DEL HOME **********************************************/
+
+.form__section {
+	width: 100%;
+	height: calc(100vh - 80px);
+}
+
+.form__section p {
+	margin-bottom: 1.5rem;
+	text-align: center;
+	color: var(--text-color);
+}
+
+.form__section label {
+	color: var(--label-color);
+}
+
+.form__section .info {
+	color: var(--link-color);
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+
+.form__section form {
+	width: 100%;
+	padding: 1rem 3.5rem;
+}
+
+.grid1 {
+	display: grid;
+	column-gap: 50px;
+	grid-template-columns: repeat(3, 1fr);
+	margin-bottom: 20px;
+}
+
+.grid__form-group label {
+	display: block;
+}
+
+.grid__form-group select,
+.grid__form-group input,
+.grid__form-group textarea {
+	width: 100%;
+	padding: .8rem 1.2rem;
+	background-color: var(--input-color);
+	border: none;
+	outline: none;
+	color: var(--text-color);
+}
+
+.grid2 {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 50px;
+	row-gap: 20px;
+}
+
+.grid2 .grid__form-group:nth-child(3) {
+	grid-column: 3/5;
+}
+
+.grid2 .grid__form-group:nth-child(4) {
+	grid-column: 1/3;
+	margin-bottom: 1.5rem;
+}
+
+.grid2 .grid__form-group:nth-child(5) {
+	grid-column: 3/5;
+	margin-bottom: 1.5rem;
+}
+
+.checkboxes {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.checkboxes span {
+	display: inline-block;
+}
+
+/************************ ESTILOS PARA LA TABLA **********************************************/
+.table__container {
+	width: 100%;
+	padding: 1rem 2.5rem;
+}
+
+.table__container table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table__container th {
+	border-bottom: 2px solid var(--link-color);
+}
+
+.table__container td {
+	padding: .5rem .8rem;
+	text-align: center;
+	border-bottom: 1px solid var(--link-color);
+	color: var(--text-color);
+}
+
+.table__container th {
+	color: var(--link-color);
+	font-weight: 600;
+}
+
+.pagination {
+	position: absolute;
+	right: 2rem;
+	bottom: 2rem;
+}
+
+.pagination ul {
+	display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination ul li {
+	display: inline;
+}
+
+.pagination ul li a {
+	color: var(--link-color);
+	text-decoration: none;
+	padding: .5rem 1rem;
+	border-radius: 8px;
+}
+
+.pagination ul li a.active {
+	background-color: var(--link-color);
+	color: var(--pagination-color);
+}
+
+.pagination ul li a:hover:not(.active) {
+	background-color: var(--first-color-alt);
+	color: var(--button-text-color);
+}
+
+/************************ ESTILOS PARA EL FORMULARIO DE INVESTIGACION **********************************************/
+.registro__formulario {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 2rem 2.5rem;
+}
+
+.form-steps .step {
+    display: none;
+}
+
+.form-steps .step:first-child {
+    display: block;
+}
+
+.registro__formulario h3 {
+	color: var(--link-color);
+}
+
+.registro__formulario p {
+	color: var(--text-color);
+	margin-bottom: 1rem;
+}
+
+.registro__formulario form {
+	width: 900px;
+}
+
+.registro__formulario form fieldset {
+	padding: 1rem 1.5rem;
+	color: var(--link-color);
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+}
+
+.registro__formulario form fieldset.gridCuatro {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.registro__formulario form fieldset.gridCuatro.declaracionT input {
+    grid-column: 1 / 3;
+}
+
+.registro__formulario form fieldset.gridCuatro.CSH input {
+    grid-column: 1 / 3;
+}
+
+.registro__formulario form fieldset.gridUno input:nth-child(2),
+.registro__formulario form fieldset.gridDos input:last-child {
+	grid-column: 1 / 3;
+}
+
+.gridCuatro textarea {
+	grid-column: 1 / 3;
+}
+
+.registro__formulario form fieldset input,
+.registro__formulario form fieldset textarea,
+.registro__formulario form fieldset select {
+	width: 100%;
+	display: block;
+	padding: .8rem 1rem;
+	outline: none;
+	border: none;
+	background-color: var(--input-color);
+	color: var(--text-color);
+}
+
+.registro__formulario form fieldset legend {
+	padding: 0 1rem;
+}
+
+.registro__formulario .radios {
+	display: flex;
+	column-gap: 10px;
+	margin-bottom: 1.5rem;
+}
+
+.registro__formulario .radios input {
+	width: initial;
+}
+
+.radio__grid label,
+.radio__grid input {
+	display: inline !important;
+}
+
+.radio__flex {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.radio__left--group,
+.radio__right--group {
+	display: flex;
+	gap: 1rem;
+}
+
+.radio__left input,
+.radio__right input {
+	width: initial !important;
+}
+
+.radio__right {
+	margin-bottom: 1.5rem;
+}
+
+
+.gridDiez {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+}
+
+
+.gridDiez button {
+	grid-column: 3 / 4;
+}
+
+.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.selectBox {
+    height: max-content;
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.selectBox button {
+    display: block;
+    height: 39px;
+    margin-right: 2rem;
+    background: var(--first-color);
+    color: var(--button-text-color);
+    padding: .5rem 1rem;
+}
+
+.selectBox select {
+    width: 300px;
+    padding: .5rem 1rem;
+    outline: none;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.optionLink {
+    text-decoration: none;
+    background-color: var(--first-color);
+    color: var(--button-text-color);
+    padding: .3rem 1rem;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f00;
+    color: var(--button-text-color);
+    padding: .8rem 4rem;    
+}
+
+.progress-bar {
+  background-color: #f2f2f2;
+  height: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #4caf50;
+  height: 100%;
+  width: 0;
+}
+
+.steps {
+    text-align: center;
+}
+
+.submit-btn.disabled {
+    cursor: none;
+    opacity: .5;
+}
